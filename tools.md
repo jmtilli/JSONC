@@ -11,15 +11,16 @@ Several tools and libraries support JSONC, enabling developers to parse and gene
 
 | Language   | Tool/Library                                      | Comments | Trailing Commas | Notes                          |
 |----------- |---------------------------------------------------|----------|-----------------|--------------------------------|
-| C++        | [nlohmann/json][nlohmann]                         | 🟡 [^1]  | 🟡 [^2]        |                                |
-| C++        | [RapidJSON][rapidjson]                            | 🟡 [^3]  | 🟡 [^4]        |                                |
-| C++        | [stephenberry/glaze][glaze]                       | 🟢 [^5]  | 🔴             |                                |
+| C          | [jmtilli/caj][CAJ]                                | 🟡 [^1]  | 🟡 [^2]        |                                |
+| C++        | [nlohmann/json][nlohmann]                         | 🟡 [^3]  | 🟡 [^4]        |                                |
+| C++        | [RapidJSON][rapidjson]                            | 🟡 [^5]  | 🟡 [^6]        |                                |
+| C++        | [stephenberry/glaze][glaze]                       | 🟢 [^7]  | 🔴             |                                |
 | Elixir     | [massivefermion/jsonc][massivefermion]            | 🟢       | 🟢             | Includes additional extensions |
 | Go         | [HuJSON][hujson]                                  | 🟢       | 🟢             |                                |
 | Go         | [tidwall/jsonc][tidwall]                          | 🟢       | 🟢             |                                |
-| Java       | [Jackson][Jackson]                                | 🟡 [^6]  | 🟡 [^7]        |                                |
-| JavaScript | [microsoft/node-jsonc-parser][msft]               | 🟢       | 🟡 [^8]        |                                |
-| Kotlin     | [kotlinx.serialization.json][kotlinx]             | 🟡 [^9]  | 🟡 [^10]       |                                |
+| Java       | [Jackson][Jackson]                                | 🟡 [^8]  | 🟡 [^9]        |                                |
+| JavaScript | [microsoft/node-jsonc-parser][msft]               | 🟢       | 🟡 [^10]       |                                |
+| Kotlin     | [kotlinx.serialization.json][kotlinx]             | 🟡 [^11] | 🟡 [^12]       |                                |
 | PHP        | [otar/jsonc][otar]                                | 🟢       | 🟢             |                                |
 | Python     | [n-takumasa/json-with-comments][n-takumasa]       | 🟢       | 🟢             |                                |
 | Rust       | [dprint/jsonc-parser][dprint]                     | 🟢       | 🟢             |                                |
@@ -36,6 +37,7 @@ Legend:
 [hujson]: https://github.com/tailscale/hujson
 [rapidjson]: https://github.com/Tencent/rapidjson
 [nlohmann]: https://github.com/nlohmann/json
+[CAJ]: https://github.com/jmtilli/caj
 [glaze]: https://github.com/stephenberry/glaze
 [tidwall]: https://github.com/tidwall/jsonc
 [Jackson]: https://github.com/FasterXML/jackson-core
@@ -47,22 +49,26 @@ Legend:
 
 <hr>
 
-[^1]: Use `ignore_comments`
+[^1]: Use `caj_allow_comments(ctx)`
 
-[^2]: Use `ignore_trailing_commas`
+[^2]: Use `caj_allow_trailing_comma(ctx)`
 
-[^3]: Use `kParseCommentsFlag`
+[^3]: Use `ignore_comments`
 
-[^4]: Use `kParseTrailingCommasFlag`
+[^4]: Use `ignore_trailing_commas`
 
-[^5]: Use `glz::read_jsonc` (or using options: `glz::opts{.comments = true}`). See [Documentation](https://github.com/stephenberry/glaze/blob/main/docs/json.md#json-with-comments-jsonc).
+[^5]: Use `kParseCommentsFlag`
 
-[^6]: Use `JsonFactory.enable(JsonReadFeature.ALLOW_JAVA_COMMENTS)`
+[^6]: Use `kParseTrailingCommasFlag`
 
-[^7]: Use `JsonFactory.enable(JsonReadFeature.ALLOW_TRAILING_COMMA)`
+[^7]: Use `glz::read_jsonc` (or using options: `glz::opts{.comments = true}`). See [Documentation](https://github.com/stephenberry/glaze/blob/main/docs/json.md#json-with-comments-jsonc).
 
-[^8]: Use `allowTrailingComma: true`
+[^8]: Use `JsonFactory.enable(JsonReadFeature.ALLOW_JAVA_COMMENTS)`
 
-[^9]: Use `allowComments`. See [Documentation](https://kotlinlang.org/api/kotlinx.serialization/kotlinx-serialization-json/kotlinx.serialization.json/-json-builder/allow-comments.html).
+[^9]: Use `JsonFactory.enable(JsonReadFeature.ALLOW_TRAILING_COMMA)`
 
-[^10]: Use `allowTrailingComma`. See [Documentation](https://kotlinlang.org/api/kotlinx.serialization/kotlinx-serialization-json/kotlinx.serialization.json/-json-builder/allow-trailing-comma.html).
+[^10]: Use `allowTrailingComma: true`
+
+[^11]: Use `allowComments`. See [Documentation](https://kotlinlang.org/api/kotlinx.serialization/kotlinx-serialization-json/kotlinx.serialization.json/-json-builder/allow-comments.html).
+
+[^12]: Use `allowTrailingComma`. See [Documentation](https://kotlinlang.org/api/kotlinx.serialization/kotlinx-serialization-json/kotlinx.serialization.json/-json-builder/allow-trailing-comma.html).
